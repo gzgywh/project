@@ -5,7 +5,7 @@ using namespace std;
 typedef long long LL;
 const int filenum = 125;//max sub file number
 const int topK = 20;//select topK URLs
-const LL file_size = 800*1024;//sub file max size
+const LL file_size = 800*1024*1024;//sub file max size
 struct P{
     string url;
     int cnt;
