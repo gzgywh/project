@@ -24,6 +24,8 @@ python 1 testdata.txt
 
 #### 设计思路
 
+
+
 #### 运行方式
 
 ```cc
@@ -32,6 +34,10 @@ g++ -std=c++14 main.cpp cut.cpp -o main.out
 ```
 
 
+
+#### 实验结果
+
+![](result.png)
 
 
 

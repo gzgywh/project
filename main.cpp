@@ -3,9 +3,9 @@
 #include "cut.h"
 using namespace std;
 typedef long long LL;
-const int filenum = 125;//max sub file number
-const int topK = 20;//select topK URLs
-const LL file_size = 800*1024*1024;//sub file max size
+const int filenum = 125;//子文件的数量
+const int topK = 100;//前100个URL
+const LL file_size = 500*1024*1024;//子文件的大小
 struct P{
     string url;
     int cnt;
@@ -24,6 +24,8 @@ int Rev(string str){
     }
     return sum;
 }
+
+//使用EFLhash算法对字符串进行hash
 unsigned int ELFhash(const char *url){
     unsigned int hash=0;
     unsigned int ans=0;
@@ -38,15 +40,15 @@ unsigned int ELFhash(const char *url){
     return (hash & 0x7fffffff);
 }
 
+//将字符串hash到对应的文件
 void Hash(string file_name,int num){
     string url;
     ifstream fin;
     fin.open(file_name);
-    if(!fin)
-        return ;
+    if(!fin) return ;
     while(getline(fin,url)){
         unsigned int file_hash = ELFhash(url.c_str())%filenum;
-        string resolved = "resolved_" + to_string((long long)file_hash) + ".txt";
+        string resolved = "Hash_" + to_string((LL)file_hash) + ".txt";
         ofstream fout(resolved,ios::app);
         fout << url << endl;
         fout.close();
@@ -56,15 +58,15 @@ void Hash(string file_name,int num){
 
 int main()
 {
-    string file_name = "testdata.txt";
-    Hash(file_name,filenum);
+    string file = "testdata.txt";
+    Hash(file,filenum);
     solve(filenum,file_size,topK);
 
     priority_queue<P>que;
     ifstream fin;
     string file_name="";
     for(int i=0;i<filenum;++i){
-        file_name = "resolved_" + to_string((long long)i) + ".txt";
+        file_name = "Hash_" + to_string((LL)i) + ".txt";
         file_name = "sorted_" + file_name;
         fin.open(file_name);
         assert(fin.is_open());
@@ -77,7 +79,7 @@ int main()
             tmp.cnt = Rev(c);
             tmp.url=url;
            // cout<<tmp.url<<" "<<tmp.cnt<<endl;
-            if(que.size()<20){
+            if(que.size()<topK){
                 que.push(tmp);
             }else{
                 P x=que.top();

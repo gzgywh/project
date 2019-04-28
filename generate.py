@@ -15,7 +15,7 @@ def generate_file(file_size,filename):
     count =int(file_size)*pow(1024,3)
     f = open(filename, 'w')
     while count>0:
-        x = random.randint(1, 999)
+        x = random.randint(1, 9999)
         s = 'https://github.com/gzgywh/project/{}\n'.format(x)
         print(s)
         count -= len(s)
