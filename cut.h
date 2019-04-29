@@ -8,14 +8,14 @@
 using namespace std;
 typedef long long LL;
 
-LL Filesize(string file_name); 
+LL filesize(string filename);
 
-void Split(string filename, int &subfile, int size);
+void splitfile(string filename, int &num, int size);
 
 void merge(string pre,int n,int topK);
 
-void sortFiles(string source,int topK=INT_MAX);
+void sortFiles(string source_file_name,int topK=INT_MAX);
 
-void solve(int filenum,int size,int topK);
+void solve(int file_num,int file_size,int topK);
 
 #endif 
