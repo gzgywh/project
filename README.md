@@ -30,7 +30,7 @@ python 10 testdata.txt
 
 #### 具体实现
 
-1.使用EFLHash算法对原始文件中的URL进hash，因为使用的同一个Hash算法，所以相同的URL一定会被hash到同一个子文件
+1.使用EFLHash算法对原始文件中的URL进hash，因为使用的同一个Hash算法，所以相同的URL一定会得到相同的hash值，然后我定义filenum个文件，相当于有filename个剩余类，不同的hash值会把文件对应到不同的剩余类中去
 
 2.统计小文件中每个URL出现的次数，并维护出现次数前TopK个URL以及对应它出现的次数，这里可以先用unordered_map统计一遍每个单词出现的次数，然后用multimap比较一下出现的频次为这个数的URL有哪些，然后出现次数从大到小倒着扫一遍，并把这个结果另外存到一个文件中
 
