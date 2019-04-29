@@ -32,7 +32,7 @@ void Split(string filename, int &subfile, int size){
             if(size + length > size){
                 fout.close();
                 cnt++;
-                str = pre + to_string((long long)(cnt)) + ".txt";
+                str = pre + to_string((LL)(cnt)) + ".txt";
                 fout.open(str,ios::ate);
                 assert(fout.is_open());
                 size = 0;

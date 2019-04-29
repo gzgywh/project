@@ -8,7 +8,7 @@
 
 #### 生成数据
 
-用python脚本生成数据，在这里为了方便我们讲URL的前缀固定为我的github名称 https://github.com/gzgywh/project ，后面加上(0,9999)之间的随机数以区分不同的URL，运行命令如下：
+用python脚本生成数据，在这里为了方便我们讲URL的前缀固定为我的github名称 https://github.com/gzgywh/project ，后面加上(1,9999)之间的随机数以区分不同的URL，运行命令如下：
 
 ```cc
 python size filename
